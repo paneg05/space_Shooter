@@ -1,5 +1,5 @@
 const hero = document.getElementById("player")
-const playArea = document.querySelector("#main-play-area")
+const playArea = document.getElementById("main-play-area")
 
 
 // movimento e tiro
@@ -47,4 +47,39 @@ function moveDown(){
     }
 }
 
+
+    //funcionalidade de tiro
+    function fireLaser () {
+        let laser = createLaserElement()
+        playArea.appendChild(laser)
+        moveLaser(laser)
+        
+    }
+
+    function createLaserElement () {
+        let xPosition = parseInt(window.getComputedStyle(hero).getPropertyPriority('left'))
+        
+        let yPosition = parseInt(window.getComputedStyle(hero).getPropertyPriority('top'))
+        
+        let newLaser = document.createElement('img')
+        newLaser.src = 'img/shot.png'
+        newLaser.classList.add('laser')
+        newLaser.style.left = `${xPosition}px`
+        newLaser.style.top = `${yPosition -10 }px`
+        return newLaser
+    }
+
+    function moveLaser (laser) {
+        let laserInterval = setInterval(() => {
+            let xPosition = parseInt(laser.style.left)
+            
+            if(xPosition === 540){
+                laser.remove()
+            }else{
+                laser.style.left = `${xPosition +8 }px`
+            }
+        },10 );
+
+        
+    }
 window.addEventListener("keydown", flyShip)
