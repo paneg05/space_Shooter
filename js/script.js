@@ -57,10 +57,10 @@ function moveDown(){
     }
 
     function createLaserElement () {
-        let xPosition = parseInt(window.getComputedStyle(hero).getPropertyPriority('left'))
+        let xPosition = parseInt(window.getComputedStyle(hero).getPropertyValue("left"))
+        let yPosition = parseInt(window.getComputedStyle(hero).getPropertyValue("top"))
         
-        let yPosition = parseInt(window.getComputedStyle(hero).getPropertyPriority('top'))
-        
+
         let newLaser = document.createElement('img')
         newLaser.src = 'img/shot.png'
         newLaser.classList.add('laser')
